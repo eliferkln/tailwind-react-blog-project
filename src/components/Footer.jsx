@@ -9,7 +9,7 @@ import {
 const Footer = () => {
 
   return (
-    <div className='max-w-[1440px] mx-auto py-24 px-4 grid lg:grid-cols-2 gap-8 text-gray-300 justify-between border-t-2 border-[#dadada63]'>
+    <div className='max-w-[1440px] mx-auto py-12 px-4 grid lg:grid-cols-2 gap-8 text-gray-300 justify-between border-t-2 border-[#dadada63]'>
       <div className='max-w-[360px]'>
         <h1 className='w-full text-3xl font-bold   text-[#13426ca6]'>Hanife Erkalan</h1>
         <p className='py-4'>I'm a passionate Front-End web developer having an experience of web applications with React.js & Next.js with TypeScript. I'm here to help you create beautifully formatted websites.</p>
