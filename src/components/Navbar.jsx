@@ -1,11 +1,30 @@
 import React, { useState } from 'react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
+import { UserAuth } from "../context/AuthContext";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
+  
+  const { user, googleSignIn, logOut } = UserAuth();
 
   const handleNav = () => {
     setNav(!nav);
+  };
+  
+  const handleSignIn = async () => {
+    try {
+      await googleSignIn();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleSignOut = async () => {
+    try {
+      await logOut();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -15,7 +34,10 @@ const Navbar = () => {
         <li className='p-6 text-[#13426ca6] '>Home</li>
         <li className='p-6 text-[#13426ca6] '>About</li>
         <li className='p-6 text-[#13426ca6] '>Contact</li>
-        <li className='p-6 text-[#13426ca6] hover:bg-[#13426ca6] hover:text-white bg-[#dadada63] rounded-md '>Sign-in</li>
+        {!user ?
+         (<li className='p-6 text-[#13426ca6] hover:bg-[#13426ca6] hover:text-white bg-[#dadada63] rounded-md ' onClick={handleSignIn} >Sign-in</li>)
+        :(<li className='p-6 text-[#13426ca6] hover:bg-[#13426ca6] hover:text-white bg-[#dadada63] rounded-md ' onClick={handleSignOut} >Sign-out</li>)}
+        
       </ul>
       <div onClick={handleNav} className='block md:hidden z-10 text-[#13426ca6]'>
           {nav ? <AiOutlineClose size={20}/> : <AiOutlineMenu size={20} />}
